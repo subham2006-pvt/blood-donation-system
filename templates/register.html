@@ -1,0 +1,11 @@
+<h2>Donor Registration</h2>
+<form method="post">
+  {% csrf_token %}
+  <input name="name" placeholder="Name"><br>
+  <input name="age" placeholder="Age"><br>
+  <input name="gender" required>
+  <input name="blood_group" placeholder="Blood Group"><br>
+  <input name="phone" placeholder="Phone"><br>
+  <input name="city" placeholder="City"><br>
+  <button type="submit">Register</button>
+</form>

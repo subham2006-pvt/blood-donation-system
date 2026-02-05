@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* 🌙 Dark theme background */
+  body {
+    background: radial-gradient(circle at top, #1b1b1b, #0d0d0d);
+  }
+
+  /* 🎬 Card animation */
+  .login-card {
+    animation: fadeSlide 0.9s ease;
+  }
+
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 🎨 Input focus glow */
+  .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.35);
+    border-color: #dc3545;
+  }
+
+  /* 🩸 Button hover */
+  .btn-danger {
+    transition: all 0.3s ease;
+  }
+
+  .btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
+  }
+</style>
+
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="min-height: 90vh;">
+
+    <div class="col-md-7">
+      <div class="card login-card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="row g-0">
+
+          <!-- 🩸 LEFT PANEL -->
+          <div class="col-md-5 d-none d-md-flex
+                      flex-column justify-content-center align-items-center
+                      text-white p-4"
+               style="background: linear-gradient(160deg, #dc3545, #7a0c16);">
+            <h1 class="display-3">🩸</h1>
+            <h4 class="fw-bold text-center">Blood Donation</h4>
+            <p class="text-center small mt-3 opacity-75">
+              A single login<br>
+              Can save many lives
+            </p>
+          </div>
+
+          <!-- 🌙 RIGHT PANEL -->
+          <div class="col-md-7 bg-dark text-light">
+            <div class="card-body p-5">
+
+              <h3 class="text-center text-danger fw-bold mb-1">
+                Welcome Back
+              </h3>
+              <p class="text-center text-secondary mb-4">
+                Continue your journey of saving lives
+              </p>
+
+              <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <input type="text"
+                         name="username"
+                         class="form-control rounded-pill bg-dark text-light border-secondary px-4"
+                         placeholder="Enter username"
+                         required>
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Password</label>
+                  <input type="password"
+                         name="password"
+                         class="form-control rounded-pill bg-dark text-light border-secondary px-4"
+                         placeholder="Enter password"
+                         required>
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit"
+                          class="btn btn-danger rounded-pill py-2 fw-semibold">
+                    Login
+                  </button>
+                </div>
+              </form>
+
+              <p class="text-center mt-4 mb-0 text-secondary">
+                New here?
+                <a href="{% url 'signup' %}"
+                   class="text-danger fw-semibold text-decoration-none">
+                  Create an account
+                </a>
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

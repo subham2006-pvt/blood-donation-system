@@ -1,0 +1,9 @@
+<h2>Blood Request</h2>
+<form method="post">
+  {% csrf_token %}
+  <input name="patient_name" placeholder="Patient Name"><br>
+  <input name="blood_group" placeholder="Blood Group"><br>
+  <input name="hospital" placeholder="Hospital"><br>
+  <input name="contact" placeholder="Contact"><br>
+  <button type="submit">Submit</button>
+</form>

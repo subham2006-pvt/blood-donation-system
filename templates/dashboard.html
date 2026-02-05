@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3 class="mb-4">🧑‍⚕️ Admin Dashboard</h3>
+
+<div class="row g-4">
+
+  <!-- Total Donors -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 text-center">
+      <div class="card-body">
+        <h5 class="text-danger">Total Donors</h5>
+        <h2 class="fw-bold">{{ donors_count }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blood Requests -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 text-center">
+      <div class="card-body">
+        <h5 class="text-danger">Blood Requests</h5>
+        <h2 class="fw-bold">{{ requests_count }}</h2>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logged-in User -->
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 text-center">
+      <div class="card-body">
+        <h5 class="text-danger">Logged In As</h5>
+        <h6 class="fw-semibold">{{ request.user.username }}</h6>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr class="my-4">
+
+<div class="d-flex gap-3">
+  <a href="/donors/" class="btn btn-danger">View Donors</a>
+  <a href="/request/" class="btn btn-outline-danger">Request Blood</a>
+</div>
+
+{% endblock %}

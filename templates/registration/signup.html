@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+  /* 🌙 Dark theme background */
+  body {
+    background: radial-gradient(circle at top, #1b1b1b, #0d0d0d);
+  }
+
+  /* 🎬 Card entrance animation */
+  .signup-card {
+    animation: fadeSlide 0.9s ease;
+  }
+
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateY(25px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* 🎨 Input focus glow */
+  .form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.35);
+    border-color: #dc3545;
+  }
+
+  /* 🩸 Button hover animation */
+  .btn-danger {
+    transition: all 0.3s ease;
+  }
+
+  .btn-danger:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(220, 53, 69, 0.4);
+  }
+</style>
+
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="min-height: 90vh;">
+
+    <div class="col-md-8">
+      <div class="card signup-card shadow-lg border-0 rounded-4 overflow-hidden">
+        <div class="row g-0">
+
+          <!-- 🩸 LEFT VISUAL PANEL -->
+          <div class="col-md-5 d-none d-md-flex
+                      flex-column justify-content-center align-items-center
+                      text-white p-4"
+               style="background: linear-gradient(160deg, #dc3545, #7a0c16);">
+            <h1 class="display-3">🩸</h1>
+            <h4 class="fw-bold text-center">Join the Mission</h4>
+            <p class="text-center small mt-3 opacity-75">
+              Your account<br>
+              Can save lives tomorrow
+            </p>
+          </div>
+
+          <!-- 🌙 RIGHT FORM PANEL -->
+          <div class="col-md-7 bg-dark text-light">
+            <div class="card-body p-5">
+
+              <h3 class="text-center text-danger fw-bold mb-1">
+                Create Account
+              </h3>
+              <p class="text-center text-secondary mb-4">
+                Become part of the life-saving network
+              </p>
+
+              <form method="post">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  {{ form.username }}
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  {{ form.password1 }}
+                </div>
+
+                <div class="mb-4">
+                  <label class="form-label">Confirm Password</label>
+                  {{ form.password2 }}
+                </div>
+
+                <div class="d-grid">
+                  <button type="submit"
+                          class="btn btn-danger rounded-pill py-2 fw-semibold">
+                    Sign Up
+                  </button>
+                </div>
+              </form>
+
+              <p class="text-center mt-4 mb-0 text-secondary">
+                Already have an account?
+                <a href="{% url 'login' %}"
+                   class="text-danger fw-semibold text-decoration-none">
+                  Login
+                </a>
+              </p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
